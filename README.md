@@ -550,7 +550,7 @@ MIT License - see LICENSE file
 ## 📧 Support
 
 For issues and questions:
-- GitHub Issues: [your-repo/issues]
+- GitHub Issues: [binhtrongg/python-sandbox/issues](https://github.com/binhtrongg/python-sandbox/issues)
 - Documentation: http://localhost:8000/docs
 
 ## 🙏 Acknowledgments
