@@ -1,0 +1,37 @@
+services:
+  # API Service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: python-sandbox-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount Docker socket to allow API to create sandbox containers
+      - /var/run/docker.sock:/var/run/docker.sock
+    # Run as root to access Docker socket on macOS Docker Desktop
+    user: root
+    env_file:
+      - .env
+    restart: unless-stopped
+    depends_on:
+      - sandbox-builder
+    networks:
+      - sandbox-network
+
+  # Sandbox Image Builder
+  # This service just builds the sandbox image and exits
+  sandbox-builder:
+    build:
+      context: ./sandbox-image
+      dockerfile: Dockerfile
+    image: python-sandbox:latest
+    container_name: sandbox-builder
+    command: ["echo", "Sandbox image built successfully"]
+    networks:
+      - sandbox-network
+
+networks:
+  sandbox-network:
+    driver: bridge

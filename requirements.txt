@@ -1,0 +1,18 @@
+# Core dependencies
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+
+# Docker (fixed compatibility issue with requests >= 2.32.0)
+docker>=7.1.0
+
+# Storage - Cloudflare R2 (S3-compatible)
+boto3>=1.34.0
+
+# Firecracker executor (optional - only needed for Firecracker provider)
+aiohttp>=3.9.0
+
+# Optional: For future extensions
+# redis==5.0.1
+# prometheus-client==0.19.0
